@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/listview-grid.css">
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+	<script src="js/jquery-2.1.0.min.js"></script>
+	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+	<script> //home panel
+		$( document ).on( "pagecreate", "#home", function() {     					//監聽是否開啟home page
+		    $( document ).on( "swipeleft swiperight", "#home", function( e ) {    	//監聽是否有左右滑動的動作
+		        // We check if there is no open panel on the page because otherwise
+		        // a swipe to close the left panel would also open the right panel (and v.v.).
+		        // We do this by checking the data that the framework stores on the page element (panel: open).
+		        if ( $( ".ui-page-active" ).jqmData( "panel" ) !== "open" ) { 		//先確認panel頁沒有開啟，
+		            if ( e.type === "swipeleft" ) {									//如監聽到滑向左邊的動作
+		                $( "#right-panel-home" ).panel( "open" );						//則開啟右邊的panel
+		            } else if ( e.type === "swiperight" ) {				  			//如有監聽到滑向右邊的動作
+		                $( "#left-panel-home" ).panel( "open" );						//開啟左邊的panel
+		            }
+		        }
+		    });
+		});
+	</script>
+	<script> //product panel
+		$( document ).on( "pagecreate", "#prod", function() {     					//監聽是否開啟home page
+		    $( document ).on( "swipeleft swiperight", "#prod", function( e ) {    	//監聽是否有左右滑動的動作
+		        // We check if there is no open panel on the page because otherwise
+		        // a swipe to close the left panel would also open the right panel (and v.v.).
+		        // We do this by checking the data that the framework stores on the page element (panel: open).
+		        if ( $( ".ui-page-active" ).jqmData( "panel" ) !== "open" ) { 		//先確認panel頁沒有開啟，
+		            if ( e.type === "swipeleft" ) {									//如監聽到滑向左邊的動作
+		                $( "#right-panel-prod" ).panel( "open" );						//則開啟右邊的panel
+		            } else if ( e.type === "swiperight" ) {				  			//如有監聽到滑向右邊的動作
+		                $( "#left-panel-prod" ).panel( "open" );						//開啟左邊的panel
+		            }
+		        }
+		    });
+		});
+	</script>
+	<!-- catelog panel -->
+	<script>
+		$( document ).on( "pagecreate", "#catelog", function() {     					//監聽是否開啟home page
+		    $( document ).on( "swipeleft swiperight", "#catelog", function( e ) {    	//監聽是否有左右滑動的動作
+		        // We check if there is no open panel on the page because otherwise
+		        // a swipe to close the left panel would also open the right panel (and v.v.).
+		        // We do this by checking the data that the framework stores on the page element (panel: open).
+		        if ( $( ".ui-page-active" ).jqmData( "panel" ) !== "open" ) { 		//先確認panel頁沒有開啟，
+		            if ( e.type === "swipeleft" ) {									//如監聽到滑向左邊的動作
+		                $( "#right-panel-catelog" ).panel( "open" );						//則開啟右邊的panel
+		            } else if ( e.type === "swiperight" ) {				  			//如有監聽到滑向右邊的動作
+		                $( "#left-panel-catelog" ).panel( "open" );						//開啟左邊的panel
+		            }
+		        }
+		    });
+		});
+	</script>
+	<!-- news panel	 -->
+	<script>
+		$( document ).on( "pagecreate", "#news", function() {     					//監聽是否開啟home page
+		    $( document ).on( "swipeleft swiperight", "#news", function( e ) {    	//監聽是否有左右滑動的動作
+		        // We check if there is no open panel on the page because otherwise
+		        // a swipe to close the left panel would also open the right panel (and v.v.).
+		        // We do this by checking the data that the framework stores on the page element (panel: open).
+		        if ( $( ".ui-page-active" ).jqmData( "panel" ) !== "open" ) { 		//先確認panel頁沒有開啟，
+		            if ( e.type === "swipeleft" ) {									//如監聽到滑向左邊的動作
+		                $( "#right-panel-news" ).panel( "open" );						//則開啟右邊的panel
+		            } else if ( e.type === "swiperight" ) {				  			//如有監聽到滑向右邊的動作
+		                $( "#left-panel-news" ).panel( "open" );						//開啟左邊的panel
+		            }
+		        }
+		    });
+		});
+	</script>
+</head>
+<body>
+	<!-- Home -->
+	<div data-role="page" id="home">
+		<div data-role="panel" id="left-panel-home">
+			<ul data-role="listview" >
+				<li data-role="list-divider" data-theme="b"><a href="#"></a>主選單</li>
+				<li data-icon="home" class="ui-btn-active ui-state-persist" ><a href="#home" >首頁</a></li>
+				<li data-icon="star"><a href="#prod">產品</a></li>
+				<li data-icon="shop"><a href="#catelog" >型錄</a></li>
+				<li data-icon="info"><a href="#news" >最新消息</a></li>
+			</ul>
+		</div>
+		<div data-role="panel" id="right-panel-home" data-position="right">
+			under instruction!!施工中！
+		</div>
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<a href="#left-panel-home" data-icon="bullets" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon">Open left panel</a>
+			<h1>Home</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<div class="ui-grid-a"> <!-- 表格4*4 黑底白字-->
+				<div class="ui-block-a"><a href="#" data-role="button" data-theme="b">選單一</a></div><!-- 舊版button -->
+				<div class="ui-block-b"><a href="#" data-role="button" data-theme="b">選單二</a></div>
+				
+			
+				<div class="ui-block-a"><a href="#" data-role="button" data-theme="b">選單三</a></div><!-- 舊版button -->
+				<div class="ui-block-b"><a href="#" data-role="button" data-theme="b">選單四</a></div>
+			</div>
+		</div>
+		
+	</div>
+	<!-- product -->
+	<div data-role="page" id="prod">
+		<div data-role="panel" id="left-panel-prod">
+			<ul data-role="listview" >
+				<li data-role="list-divider" data-theme="b"><a href="#"></a>主選單</li>
+				<li data-icon="home"  ><a href="#home" >首頁</a></li>
+				<li data-icon="star" class="ui-btn-active ui-state-persist"><a href="#prod">產品</a></li>
+				<li data-icon="shop"><a href="#catelog" >型錄</a></li>
+				<li data-icon="info"><a href="#news" >最新消息</a></li>
+			</ul>
+		</div>
+		<div data-role="panel" id="right-panel-prod" data-position="right">
+			under instruction!!施工中！
+		</div>
+		<div data-role="header" data-theme="b" data-position="fixed">
+			<a href="#" data-rel="back" data-theme="a" data-icon="back" data-iconpos="notext">Back</a>
+			<h1>產品</h1>
+		</div>
+		<!-- product-a42 -->
+		<div role="main" class="ui-content">
+			<a href="#a42" data-rel="popup" data-position-to="window">
+				<img src="./images/large-a42.png"  width="32%" alt="">	
+			</a>
+			<div data-role="popup" id="a42" data-dismissible="false">
+				<a href="#" data-role="button" data-icon="delete" data-iconpos="notext" data-theme="a" class="ui-btn-right" data-rel="back">Close</a>
+				<img src="images/large-a42.png" alt="">
+				<p>品牌：三星</p>
+				<p>尺寸：6.0</p>
+				<p>售價：$8800</p>				
+			</div>
+			<!-- a51 -->
+			<a href="#a51" data-rel="popup" data-position-to="window">
+				<img src="./images/large-a51.png" width="32%" alt="">
+			</a>
+			<div data-role="popup" id="a51" data-dismissible="false">
+				<a href="#" data-role="button" data-icon="delete" data-iconpos="notext" data-theme="a" class="ui-btn-right" data-rel="back">Close</a>
+				<img src="./images/large-a51.png" alt="">
+				<p>品牌：三星</p>
+				<p>尺寸：6.3寸</p>
+				<p>售價：$9900</p>
+			</div>
+			<!-- i12 -->
+			<a href="#i12" data-rel="popup" data-position-to="window">
+				<img src="./images/large-i12.png" width="32%" alt="">
+			</a>
+			<div data-role="popup" id="i12" data-dismissible="false"> 
+				<a href="#" data-role="button" data-icon="delete" data-iconpos="notext" data-theme="a" class="ui-btn-right" data-rel="back">Close</a>
+				<img src="./images/large-i12.png" alt="">
+				<p>品牌：Apple</p>
+				<p>尺寸：6.2寸</p>
+				<p>售價：$29900</p>			
+			</div>
+			<!-- a71 -->
+			<a href="#a71" data-rel="popup" data-position-to="window"><img src="images/large-a71.png"  width="32%" alt=""></a>
+			<div data-role="popup" id="a71"    data-dismissible="false">
+				<a href="#" data-role="button" data-icon="delete" data-theme="a " data-iconpos="notext" class="ui-btn-right" data-rel="back">Close</a>
+				<img src="./images/large-a71.png" alt="">
+				<p>品牌：三星</p>
+				<p>尺寸：6.3寸</p>
+				<p>售價：$8900</p>
+			</div>
+			<!-- s20se -->
+			<a href="#s20se" data-rel="popup" data-position-to="window"><img src="images/large-s20se.png" width="32%"  alt=""></a>
+			<div data-role="popup" id="s20se" data-dismissible="false">
+				<a href="#" data-role="button" data-icon="delete" data-theme="a " data-iconpos="notext" class="ui-btn-right" data-rel="back">Close</a>
+				<img src="./images/large-s20se.png" alt="">
+				<p>品牌：三星</p>
+				<p>尺寸：6.5寸</p>
+				<p>售價：$11900</p>
+			</div>
+			<!-- x12 -->
+			<a href="#x12" data-rel="popup" data-position-to="window"><img src="images/large-x12.png" width="32%"  alt=""></a>
+			<div data-role="popup" id="x12"    data-dismissible="false">
+				<a href="#" data-role="button" data-icon="delete" data-theme="a " data-iconpos="notext" class="ui-btn-right" data-rel="back">Close</a>
+				<img src="./images/large-x12.png" alt="">
+				<p>品牌：Sony</p>
+				<p>尺寸：6.4寸</p>
+				<p>售價：$28900</p>
+			</div>
+			<!-- x-5 -->
+			<a href="#x5" data-rel="popup" data-position-to="window"><img src="images/large-x5.png" width="32%"  alt=""></a>
+			<div data-role="popup" id="x5"    data-dismissible="false">
+				<a href="#" data-role="button" data-icon="delete" data-theme="a " data-iconpos="notext" class="ui-btn-right" data-rel="back">Close</a>
+				<img src="./images/large-x5.png" alt="">
+				<p>品牌：Sony</p>
+				<p>尺寸：6.1寸</p>
+				<p>售價：$18900</p>
+			</div>
+			<!-- xwing -->
+			<a href="#xwing" data-rel="popup" data-position-to="window"><img src="images/large-xwing.png" width="32%"  alt=""></a>
+			<div data-role="popup" id="xwing"    data-dismissible="false">
+				<a href="#" data-role="button" data-icon="delete" data-theme="a " data-iconpos="notext" class="ui-btn-right" data-rel="back">Close</a>
+				<img src="./images/large-xwing.png" alt="">
+				<p>品牌：LG</p>
+				<p>尺寸：6.5寸</p>
+				<p>售價：$38900</p>
+			</div>
+			<a href="#zf7" data-rel="popup" data-position-to="window"><img src="images/large-zenfone7.png" width="32%"  alt=""></a>
+			<div data-role="popup" id="zf7"    data-dismissible="false">
+				<a href="#" data-role="button" data-icon="delete" data-theme="a " data-iconpos="notext" class="ui-btn-right" data-rel="back">Close</a>
+				<img src="./images/large-zenfone7.png" alt="">
+				<p>品牌：Asus</p>
+				<p>尺寸：6.4寸</p>
+				<p>售價：$28900</p>
+			</div>
+		</div>
+		
+	</div>
+	<!-- catelog -->
+	<div data-role="page" id="catelog">
+		<div data-role="panel" id="left-panel-catelog">
+			<ul data-role="listview" >
+				<li data-role="list-divider" data-theme="b"><a href="#"></a>主選單</li>
+				<li data-icon="home"  ><a href="#home" >首頁</a></li>
+				<li data-icon="star" ><a href="#prod">產品</a></li>
+				<li data-icon="shop" class="ui-btn-active ui-state-persist"><a href="#catelog" >型錄</a></li>
+				<li data-icon="info"><a href="#news" >最新消息</a></li>
+			</ul>
+		</div>
+		<div data-role="panel" id="right-panel-catelog" data-position="right">
+			under instruction!!施工中！
+		</div>
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<a href="#" data-rel="back" data-theme="a" data-iconpos="notext" data-icon="back" data-theme="a">Back</a>
+			<h1>型錄</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<!-- Collapsible -->
+			<div data-role="collapsible-set">
+				<div data-role="collapsible">
+					<h3>精工5 Sports x 火影忍者 鹿丸 聯名</h3>
+					<p>
+						<img src="images/8220885_L.jpg" alt="">
+						<p>
+							火影忍者 聯名錶，聯名超限量<br>
+							Seiko X Naruto <br>
+							5 Sports 自動上鍊機芯，星期/日期視窗<br>
+							單向轉圈錶圈，41小時動力，百米防水<br>
+
+							精工5 號 精密自動上鍊機芯，榮耀'精工非凡製錶
+							搭配百米防水，單向轉圈錶圈設計
+							並且都具有相同的箭形分針，獨特的時標和單向旋轉錶圈。
+							且搭載機芯皆為Seiko久經考驗的可靠自動機芯4R36，
+							備有24顆寶石，可手動上鍊，41小時動力儲存。
+							
+						</p>
+					</p>
+				</div>
+				<div data-role="collapsible">
+					<h3>精工5 Sports x 火影忍者 鳴人 聯名限量</h3>
+					<p>
+						<img src="images/8226113_L.jpg" alt="" width="45%">
+						<img src="images/minren.jpg" alt="" width="45%">
+						<p>
+							自Seiko 5 Sports誕生以來已有半個世紀，
+							手錶所被要求的角色已經轉變為自我表達的方式，而不僅僅是知道時間。
+							全新Seiko 5 Sports 的關鍵字為「Show Your Style」。
+							於今重生，並被賦予將鐘錶文化傳承給下一代的角色。
+						</p>
+					</p>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	<!-- 最新消息 -->
+	<div data-role="page" id="news" class="my-page"  >
+		<div data-role="panel" id="left-panel-news">
+			<ul data-role="listview" >
+				<li data-role="list-divider" data-theme="b"><a href="#"></a>主選單</li>
+				<li data-icon="home"  ><a href="#home" >首頁</a></li>
+				<li data-icon="star" ><a href="#prod">產品</a></li>
+				<li data-icon="shop" ><a href="#catelog" >型錄</a></li>
+				<li data-icon="info" class="ui-btn-active ui-state-persist"><a href="#news" >最新消息</a></li>
+			</ul>
+		</div>
+		<div data-role="panel" id="right-panel-news" data-position="right">
+			under instruction!!施工中！	
+		</div>	
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<a href="#" data-rel="back" data-theme="a" data-icon="back">Back</a>
+     		<h1>最新消息	</h1>
+			<a href="#home" data-theme="a" data-icon="home">Home</a>
+		</div>
+		<div role="main" class="ui-content">
+		
+		<ul data-role="listview" data-inset="true" data-theme="b" data-filter="true" data-filter-placeholder="請輸入標題。。">
+			<li >
+				<a href="#"><img src="images/8061892_L.jpg" alt="" class="ui-li-thumb" >
+					<h2>
+						快打旋風Street Fighter V聯名腕錶
+					</h2>
+					<p>
+					自動上鍊機械機芯
+					單向旋轉錶圈
+					旋入式透視背蓋
+					不鏽鋼錶殼
+					日期與星期視窗顯示
+					日常防水100米
+					</p>
+					<p class="ui-li-aside">
+						SEIKO 5
+					</p >
+				</a>
+			</li>
+			<li >
+				<a href="#"><img src="images/8220882_L.jpg" alt="" class="ui-li-thumb" >
+					<h2>
+						火影忍者 聯名錶
+					</h2>
+					<p>
+						聯名超限量
+						Seiko X Naruto
+						5 Sports 自動上鍊機芯，星期/日期視窗
+						單向轉圈錶圈，41小時動力，百米防水
+					</p>
+					<p class="ui-li-aside">
+						SEIKO特價
+					</p >
+				</a>
+			</li>
+			<li >
+				<a href="#"><img src="images/8226114_L.jpg" alt="" class="ui-li-thumb" >
+					<h2>
+						火影忍者 佐助 聯名限量
+					</h2>
+					<p>
+						佐助 限量聯名款，背刻限量編號
+						千鳥概念錶盤，護額元素設計
+						天地卷軸特殊包裝
+						自動上鍊，日期星期顯示
+					</p>
+					<p class="ui-li-aside">
+						SEIKO精工
+					</p >
+				</a>
+			</li>
+			<li >
+				<a href="#"><img src="images/8220885_L.jpg" alt="" class="ui-li-thumb" >
+					<h2>
+						勞力士手錶
+					</h2>
+					<p>
+						特色禮品保證伊拉克共，中學培訓專輯以後
+					</p>
+					<p class="ui-li-aside">
+						Rolex手錶
+					</p >
+				</a>
+			</li>
+		</ul>
+		</div>
+	</div>
+</body>
+</html>

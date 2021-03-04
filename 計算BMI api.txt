@@ -1,0 +1,9 @@
+計算BMI api
+
+#input 接收數據#(注意大小寫)
+
+# $heigth （身高）
+# $weigth  （體重）	
+
+#output 傳送結果#
+ $bmi

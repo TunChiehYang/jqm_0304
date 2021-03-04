@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>產品新增頁</title>
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+	<script src="js/jquery-2.1.0.min.js"></script>
+	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+	<script>
+		var flag_pname=false;
+		$(function(){
+			$("#ok_btn").bind("click", function(){
+				if(flag_pname){
+					console.log($("#pname").val());
+					console.log($("#price").val());
+					console.log($("#qty").val());
+					$.ajax({
+					type: "POST",
+					url: "20210217-2_insert_db.php",
+					data: {name:$("#pname").val(),price:$("#price").val(),qty:$("#qty").val()},
+					dataType:"json",
+					success: showdata,
+					error: function(){
+						alert("error-20210217-2_insert_db.php");
+					},
+					});		
+				}else{
+					alert("產品名稱輸入錯誤！");
+				}
+			});
+			$("#pname").bind("input propertychange",function(){
+				console.log($(this).val());
+
+				$.ajax({
+					type: "POST",
+					url: "20210224check_pname_exit.php",
+					data:{name:$("#pname").val()},
+					dataType:"json",
+					success: showdata_pname_exist,
+					error: function(){
+						console.log("怎麼跑到ERROR這裡來")
+						alert("error-20210217-2_insert_db.php");
+					},
+					});
+				flag_pname=true;		
+				
+				// if($(this).val().length>1){
+				// 	$("#pname_err").html("");
+				// 	$.ajax({
+				// 		type:"POST",
+				// 		url:"20210224check_pname_exit.php",
+				// 		data:{name:$("#pname").val()},
+				// 		dataType:"json",
+				// 		success: showdata_pname_exist,
+				// 		error:function(){
+				// 			console.log("怎麼跑到ERROR這裡來")
+				// 			// alert("error-20210224check_pname_exit.php");
+				// 		},
+				// 	});
+				// 	flag_pname=true;
+				// }else{
+				// 	console.log("怎麼跑la")
+				// 	$("#pname_err").html("品名不得為空白及少於2個字!");
+				// 	flag_pname=false;
+				// }
+			});
+		});
+		function showdata(data){
+			// console.log(data);   
+			if(data.status){
+				alert(data.message);
+				$("#pname").val("");
+				location.href="20210228-1-insert_db.html";
+			}else{
+				alert(data.message);
+			}
+		}
+		function showdata_pname_exist(data){
+			console.log(data);
+			if(data.status){
+				$("#pname_err").html(data.message);
+				flag_pname=true;
+			}else{
+				$("#pname_err").html(data.message);
+				$("#pname_err").css("color","red");
+				flag_pname=false;
+			}
+
+		}
+		
+	</script>
+</head>
+<body>
+	<div data-role="page" id="home">
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>新增頁</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<div data-role="fieldcontain">
+				<label for="pname">產品名稱：</label>
+				<input type="text" name="pname" id="pname" placeholder="請輸入品名，不得為空白及少於2個字....">
+			</div>
+			<div id="pname_err"></div>
+			<!-- Slider bar 滑桿 -->
+			<div data-role="fieldcontain">
+				<label for="price">價格:</label>
+				<input type="range" name="price" id="price" value="0" max="99999" min="1" >
+			</div>
+			<div data-role="fieldcontain">
+				<label for="qty">數量:</label>
+				<input type="range" name="qty" id="qty" value="0" max="999" min="1" >
+			</div>
+			<div class="ui-grid-a"> <!-- 表格4*4 黑底白字-->
+				<div class="ui-block-a"><a href="./20210228-1-insert_db.html" data-role="button" data-theme="b" data-icon="delete">取消</a></div><!-- 舊版button -->
+				<div class="ui-block-b"><a href="#" data-role="button" data-theme="b" data-icon="check" id="ok_btn">確定</a></div>
+			</div>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h1>頁尾	</h1>
+		</div>
+	</div>
+</body>
+</html>

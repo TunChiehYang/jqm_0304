@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+	<script src="js/jquery-2.1.0.min.js"></script>
+	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+	<script>
+		
+		var id;
+		$(function(){
+			$.ajax({
+				type:"GET",
+				url:"20210217-2_select_db.php",
+				dataType:"json",
+				async:false,
+				success:showdata,
+				error:function(){
+					alert("error-20210217-2_select_db.php");
+				}
+			});
+			$("#prod_show #del_btn").bind("click",function(){
+				console.log($(this).data("id"));
+				if(confirm("是否刪除編號："+$(this).data("id")+"  ?")){
+					$.ajax({
+						type: "POST",
+						url: "20210226-1_delete_db.php",
+						data: {id:$(this).data("id")},
+						dataType:"json",
+						success: showdata_del,
+						error: function(){
+							alert("error-20210226-1_delete_db.php");
+						},
+					});
+				}
+			});
+			$("#prod_show #update_btn").bind("click",function(){
+				$.mobile.changePage( "#update_page", { transition: "slideup", changeHash: false });
+				console.log($(this).data("id"));
+				id=$(this).data("id");
+				console.log($(this).data("name"));
+				console.log($(this).data("price"));
+				console.log($(this).data("qty"));
+				$("#pname").val($(this).data("name"));
+				$("#price").val($(this).data("price"));
+				$("#qty").val($(this).data("qty"));
+				$("#price").slider("refresh");
+				$("#qty").slider("refresh");
+				
+			});
+			$("#upd_confirm_btn").bind("click",function(){
+				// console.log(id);
+				// console.log($("#price").val());
+				// console.log($("#qty").val());
+
+				// if(confirm("你更新的價格為："+$("#price").val()+ "  數量為："+$("#qty").val()+" 個")){
+					$.ajax({
+						type: "POST",
+						url: "20210303-1_udpate_db.php",
+						data: {id:id, price:$("#price").val() ,qty:$("#qty").val()},
+						dataType:"json",
+						success: showdata_update,
+						error: function(){
+							alert("error-20210303-1_udpate_db.php");
+						},
+					});
+				// }
+			})
+
+		});
+		
+		function showdata(data){
+			console.log(data);
+			for(var i=0;i<data.length;i++){
+				var strHTML='<tr><td>'+data[i]["ID"]+'</td><td>'+data[i]["Name"]+'</td><td>'+data[i]["Price"]+'</td><td>'+data[i]["Qty"]+'</td><td>'+data[i]["Created_at"]+'</td><td><button id="update_btn" data-id="'+data[i]["ID"]+'" data-name="'+data[i]["Name"]+'" data-price="'+data[i]["Price"]+'" data-qty="'+data[i]["Qty"]+'">更新</button><button data-id="'+data[i]["ID"]+'" id="del_btn">刪除</button></td></tr>';
+				$("#prod_show").append(strHTML);
+			}
+		}
+		function showdata_del(data){
+			if(data.status){
+				alert(data.message);
+				location.href="20210226-1_table_update.html";
+				
+			}else{
+				alert(data.message);
+			}
+		}
+		function showdata_update(data){
+			if(data.status){
+				alert(data.message);
+				location.href="20210226-1_table_update.html";
+			}else{
+				alert(data.message);
+			}
+		}
+	</script>
+	
+</head>
+<body>
+	<div data-role="page" id="home">
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>首頁	</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<table data-role="table" id="table-column-toggle" data-mode="columntoggle" class="ui-responsive table-stroke">
+				<thead>
+					<tr>
+						<th>編號</th>
+						<th>品名</th>>
+						<th>價格</th>
+						<th>數量</th>
+						<th>建立時間</th>
+						<th>#</th>
+					</tr>				
+				</thead>
+				<tbody id="prod_show">
+					<!-- <tr>
+						<td>001</td>
+						<td>紅茶</td>
+						<td>35</td>
+						<td>3</td>
+						<td>20210226</td>
+						<td><button>更新</button><button>刪除</button></td>
+					</tr> -->
+				</tbody>
+			</table>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h1>頁尾	</h1>
+		</div>
+	</div>
+	<div data-role="page" id="update_page">
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>更新產品</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<div data-role="fieldcontain">
+				<label for="pname">產品名:</label>
+				<input type="text" name="pname" id="pname" placeholder="請輸入帳號...." disabled>
+			</div>
+			<!-- Slider bar 滑桿 -->
+			<div data-role="fieldcontain">
+				<label for="price">價格:</label>
+				<input type="range" name="price" id="price" value="0" value="1" max="999999" min="1" step="1">
+			</div>
+			<div data-role="fieldcontain">
+				<label for="qty">數量:</label>
+				<input type="range" name="qty" id="qty" value="1" max="9999" min="1" step="1">
+			</div>
+			<div class="ui-grid-a"> <!-- 表格4*4 黑底白字-->
+				<div class="ui-block-a"><a href="#" data-role="button" data-theme="b" data-icon="delete">取消</a></div><!-- 舊版button -->
+				<div class="ui-block-b"><a href="#" data-role="button" data-theme="b" data-icon="check" id="upd_confirm_btn">確定</a></div>
+			</div>
+			
+
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h1>頁尾	</h1>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+	<script src="js/jquery-2.1.0.min.js"></script>
+	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+	<script>
+		$(function(){
+			$("#ok_btn").bind("click",function(){
+				console.log($("#username").val());
+				console.log($("#psw").val());
+				console.log($("#email").val());
+				console.log($("#tel").val());
+				console.log($("#num").val());
+				$("#showmsg").html("<h3>帳號："+$("#username").val()+"<br>"+"密碼："+$("#psw").val()+"<br>"+"郵箱："+$("#email").val()+"<br>"+"電話："+$("#tel").val()+"<br>"+"數量："+$("#num").val()+"</h3>");
+			});
+		});
+	</script>
+</head>
+<body>
+	<div data-role="page" id="home">
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>首頁	</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<div data-role="fieldcontain">
+				<label for="username">帳號:</label>
+				<input type="text" name="username" id="username" placeholder="請輸入帳號....">
+			</div>
+			<div data-role="fieldcontain">
+				<label for="psw">密碼:</label>
+				<input type="password" name="psw" id="psw" placeholder="請輸入密碼....">
+			</div>
+			<div data-role="fieldcontain">
+				<label for="email">郵箱:</label>
+				<input type="email" name="email" id="email" placeholder="請輸入email....">
+			</div>
+			<div data-role="fieldcontain">
+				<label for="tel">電話:</label>
+				<input type="tel" name="tel" id="tel" placeholder="電話號碼....">
+			</div>
+			<div data-role="fieldcontain">
+				<label for="num">數量:</label>
+				<input type="number" name="num" id="num" placeholder="請輸入正整數....">
+			</div>
+			<a href="#" data-role="button" data-theme="b" data-icon="check" id="ok_btn">確認</a>
+			<div id="showmsg"></div>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h1>頁尾	</h1>
+		</div>
+	</div>
+</body>
+</html>

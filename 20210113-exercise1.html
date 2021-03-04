@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+	<script src="js/jquery-2.1.0.min.js"></script>
+	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+	<script> //home panel
+		$( document ).on( "pagecreate", "#home", function() {     					//監聽是否開啟home page
+		    $( document ).on( "swipeleft swiperight", "#home", function( e ) {    	//監聽是否有左右滑動的動作
+		        // We check if there is no open panel on the page because otherwise
+		        // a swipe to close the left panel would also open the right panel (and v.v.).
+		        // We do this by checking the data that the framework stores on the page element (panel: open).
+		        if ( $( ".ui-page-active" ).jqmData( "panel" ) !== "open" ) { 		//先確認panel頁沒有開啟，
+		            if ( e.type === "swipeleft" ) {									//如監聽到滑向左邊的動作
+		                $( "#right-panel-home" ).panel( "open" );						//則開啟右邊的panel
+		            } else if ( e.type === "swiperight" ) {				  			//如有監聽到滑向右邊的動作
+		                $( "#left-panel-home" ).panel( "open" );						//開啟左邊的panel
+		            }
+		        }
+		    });
+		});
+	</script>
+	<script> //regist panel
+		$( document ).on( "pagecreate", "#regist", function() {     					//監聽是否開啟regit page
+		    $( document ).on( "swipeleft swiperight", "#regist", function( e ) {    	//監聽是否有左右滑動的動作
+		        // We check if there is no open panel on the page because otherwise
+		        // a swipe to close the left panel would also open the right panel (and v.v.).
+		        // We do this by checking the data that the framework stores on the page element (panel: open).
+		        if ( $( ".ui-page-active" ).jqmData( "panel" ) !== "open" ) { 		//先確認panel頁沒有開啟，
+		            if ( e.type === "swipeleft" ) {									//如監聽到滑向左邊的動作
+		                $( "#right-panel-regist" ).panel( "open" );						//則開啟右邊的panel
+		            } else if ( e.type === "swiperight" ) {				  			//如有監聽到滑向右邊的動作
+		                $( "#left-panel-regist" ).panel( "open" );						//開啟左邊的panel
+		            }
+		        }
+		    });
+		});
+	</script>
+		<script> //info panel
+		$( document ).on( "pagecreate", "#info", function() {     					//監聽是否開啟info page
+		    $( document ).on( "swipeleft swiperight", "#info", function( e ) {    	//監聽是否有左右滑動的動作
+		        // We check if there is no open panel on the page because otherwise
+		        // a swipe to close the left panel would also open the right panel (and v.v.).
+		        // We do this by checking the data that the framework stores on the page element (panel: open).
+		        if ( $( ".ui-page-active" ).jqmData( "panel" ) !== "open" ) { 		//先確認panel頁沒有開啟，
+		            if ( e.type === "swipeleft" ) {									//如監聽到滑向左邊的動作
+		                $( "#right-panel-info" ).panel( "open" );file:///C:/xampp/htdocs/webdesign/images/8220882_L.jpg						//則開啟右邊的panel
+		            } else if ( e.type === "swiperight" ) {				  			//如有監聽到滑向右邊的動作
+		                $( "#left-panel-info" ).panel( "open" );						//開啟左邊的panel
+		            }
+		        }
+		    });
+		});
+	</script>
+
+	<script>
+		var flag_username=false;
+		var flag_password=false;
+		var flag_confirm=false;
+		$(function(){
+			// 靜態監聽--註冊
+			$("#btn_ok").bind("click",function(){
+				if(flag_username&&flag_password&&flag_confirm){
+					var myintrest=[];
+					$.each($("input[name='intrest']:checked"),function(){
+						myintrest.push($(this).val());
+					});
+					var myblood=[];
+					$.each($("input[name='blood']:checked"),function(){
+						myblood.push($(this).val());
+					});
+					$("showmsg").html("<p>帳號："+$("#username").val()+"</p>密碼："+$("#password").val()+"</p>確認密碼："+$("#confirm").val()+"</p>生日："+$("#bday").val()+"</p>訂購數量："+$("#qty").val()+"</p>性別："+$("#sex").val()+"</p>興趣: "+myintrest+"</p>血型："+myblood+"</p>")
+				}else{
+					alert("欄位輸入錯誤！！");
+				}
+			})
+			// 靜態監聽--註冊
+			$("#login_ok").bind("click",function(){
+				if($("#name_login").val()=="admin"&&$("#psw_login").val()=="123456"){
+					alert("登入輸入正確！！");
+				}else{
+					alert("登入輸入錯誤！！");
+				}
+			})
+			// 動態監聽
+			$("#username").bind("input propertychang",function(){
+				if($("#username").val().length >4 && $("#username").val().length <9){
+					$("#err_username").html("");
+					flag_username=true;
+				}else{
+					$("#err_username").html("請輸入帳號.介於5~8字數以內");
+					$("#err_username").css("color","red");
+					flag_username=false;
+				}
+			});
+			$("#password").bind("input propertychang",function(){
+				if($("#password").val().length<9 && $("#password").val().length>0){
+					$("#err_password").html("");
+					flag_password=true;
+				}else{
+					$("#err_password").html("請輸入帳號.8字數以內");
+					$("#err_password").css("color","red");
+					flag_password=false;
+				}
+			});
+			$("#confirm").bind("input propertychang",function(){
+				if($("#confirm").val() == $("#password").val()){
+					$("#err_confirm").html("");
+					flag_confirm=true;
+				}else{
+					$("#err_confirm").html("需與密碼完全符合");
+					$("#err_confirm").css("color","red");
+					flag_confirm=false;
+				}
+			});
+		})
+	</script>
+</head>
+<body>
+	<div data-role="page" id="home">
+		<!-- 首頁的左邊panel -->
+		<div data-role="panel" id="left-panel-home">
+			<ul data-role="listview" >
+				<li data-role="list-divider" data-theme="b"><a href="#"></a>主選單</li>
+				<li data-icon="home" class="ui-btn-active ui-state-persist" ><a href="#home" >首頁</a></li>
+				<li data-icon="edit"><a href="#regist">註冊</a></li>
+				<li data-icon="info"><a href="#info" >最新消息</a></li>
+			</ul>
+		</div>
+		<!-- 首頁的右邊panel -->
+		<div data-role="panel" id="right-panel-home" data-position="right">
+			<h3>登入畫面</h3>
+			<div data-role="fieldcontain">
+				<label for="name_login">帳號:</label>
+				<input type="text" name="name_login" id="name_login" placeholder="請輸入帳號....">
+			</div>
+			<div data-role="fieldcontain">
+				<label for="psw_login">密碼:</label>
+				<input type="password" name="psw_login" id="psw_login" placeholder="請輸入密碼....">
+			</div>
+			<div class="ui-grid-a"> <!-- 表格4*4 黑底白字-->
+				<div class="ui-block-a"><a href="#" data-role="button" data-theme="b" id="login_ok">確認</a></div><!-- 舊版button -->
+				<div class="ui-block-b"><a href="#" data-role="button" data-theme="b" id="login_cancel">取消</a></div>
+				
+			</div>
+		</div>
+
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>首頁	</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<img src="images/8220882_L.jpg" alt="" width="100%" height="100%">
+			<p>
+				歡迎光臨官方網站！！
+			</p>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<div data-role="navbar" data-grid="b" data-iconpos="right">
+				<ul>
+					<li><a href="#home" data-icon="home" class="ui-btn-active">首頁</a></li>
+					<li><a href="#regist" data-icon="edit">註冊</a></li>
+					<li><a href="#info" data-icon="info">最新消息</a></li>
+				</ul>
+			</div>
+			
+		</div>
+	</div>
+	<div data-role="page" id="regist">
+		<div data-role="panel" id="left-panel-regist">
+			<ul data-role="listview" >
+				<li data-role="list-divider" data-theme="b"><a href="#"></a>主選單</li>
+				<li data-icon="home" class="ui-btn-active ui-state-persist" ><a href="#home" >首頁</a></li>
+				<li data-icon="edit"><a href="#regist">註冊</a></li>
+				<li data-icon="info"><a href="#info" >最新消息</a></li>
+			</ul>
+		</div>
+		<div data-role="panel" id="right-panel-regist" data-position="right">
+			<h3>登入畫面</h3>
+			<div data-role="fieldcontain">
+				<label for="name_login">帳號:</label>
+				<input type="text" name="name_login" id="name_login" placeholder="請輸入帳號....">
+			</div>
+			<div data-role="fieldcontain">
+				<label for="psw_login">密碼:</label>
+				<input type="password" name="psw_login" id="psw_login" placeholder="請輸入密碼....">
+			</div>
+			<div class="ui-grid-a"> <!-- 表格4*4 黑底白字-->
+				<div class="ui-block-a"><a href="#" data-role="button" data-theme="b" id="login_ok">確認</a></div><!-- 舊版button -->
+				<div class="ui-block-b"><a href="#" data-role="button" data-theme="b" id="login_cancel">取消</a></div>
+				
+			</div>
+		</div>
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>註冊</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<h1>請註冊新帳號</h1>
+			<div data-role="fieldcontain">
+				<label for="username">帳號:</label>
+				<input type="text" name="username" id="username" placeholder="請輸入帳號.介於5~8字數以內!...">
+			</div>
+			<div id="err_username"></div>
+			<div data-role="fieldcontain">
+				<label for="password">密碼:</label>
+				<input type="password" name="password" id="password" placeholder="請輸入密碼.介於8字數以內!...">
+			</div>
+			<div id="err_password"></div>
+			<div data-role="fieldcontain">
+				<label for="confirm">確認密碼:</label>
+				<input type="password" name="confirm" id="confirm" placeholder="請再次輸入密碼....">
+			</div>
+			<div id="err_confirm"></div>
+			<div data-role="fieldcontain">
+				<label for="bday">生日:</label>
+				<input type="date" name="bday" id="bday" placeholder="請輸入生日....">
+			</div>
+			<div data-role="fieldcontain">
+				<label for="qty">訂購數量:</label>
+				<input type="number" name="qty" id="qty" placeholder="請輸入訂購數量....">
+			</div>
+			<div data-role="fieldcontain">
+				<label for="sex">性別</label>
+				<select name="sex" id="sex" data-role="slider">
+					<option value="男">男</option>
+					<option value="女">女</option>
+				</select>
+			</div>
+			<div data-role="fieldcontain">
+				<fieldset data-role="controlgroup" data-type="horizontal" >
+					<legend>興趣(複選)</legend>
+					<input type="checkbox" name="intrest" id="intrest1" value="打球">
+					<label for="intrest1">打球</label>
+					<input type="checkbox" name="intrest" id="intrest2" value="旅遊">
+					<label for="intrest2">旅遊</label>
+					<input type="checkbox" name="intrest" id="intrest3" value="閱讀">
+					<label for="intrest3">閱讀</label>
+					<input type="checkbox" name="intrest" id="intrest4" value="爬山">
+					<label for="intrest4">爬山</label>
+					<input type="checkbox" name="intrest" id="intrest5" value="釣魚">
+					<label for="intrest5">釣魚</label>
+				</fieldset>
+			</div>
+			<div data-role="fieldcontain">
+				<fieldset data-role="controlgroup" data-type="horizontal" >
+					<legend>血型</legend>
+					<input type="radio" name="blood" id="blood1" value="A型">
+					<label for="blood1">A型</label>
+					<input type="radio" name="blood" id="blood2" value="B型">
+					<label for="blood2">B型</label>
+					<input type="radio" name="blood" id="blood3" value="O型">
+					<label for="blood3">O型</label>
+					<input type="radio" name="blood" id="blood4" value="AB型">
+					<label for="blood4">AB型</label>
+			</div>
+			<div class="ui-grid-a"> <!-- 表格4*4 黑底白字-->
+				<div class="ui-block-a"><a href="#" data-role="button" data-theme="b" id="btn_ok">確定</a></div><!-- 舊版button -->
+				<div class="ui-block-b"><a href="#" data-role="button" data-theme="b" id="btn_cancel">取消</a></div>
+			</div>
+			<div id="showmsg"></div>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<div data-role="navbar" data-grid="b" data-iconpos="right">
+				<ul>
+					<li><a href="#home" data-icon="home" >首頁</a></li>
+					<li><a href="#regist" data-icon="edit" class="ui-btn-active">註冊</a></li>
+					<li><a href="#info" data-icon="info">最新消息</a></li>
+				</ul>
+			</div>	
+		</div>
+	</div>
+	<div data-role="page" id="info">
+		<!-- 首頁的左邊panel -->
+		<div data-role="panel" id="left-panel-info">
+			<ul data-role="listview" >
+				<li data-role="list-divider" data-theme="b"><a href="#"></a>主選單</li>
+				<li data-icon="home" class="ui-btn-active ui-state-persist" ><a href="#home" >首頁</a></li>
+				<li data-icon="edit"><a href="#regist">註冊</a></li>
+				<li data-icon="info"><a href="#info" >最新消息</a></li>
+			</ul>
+		</div>
+		<!-- 首頁的右邊panel -->
+		<div data-role="panel" id="right-panel-info" data-position="right">
+			<h3>登入畫面</h3>
+			<div data-role="fieldcontain">
+				<label for="name_login">帳號:</label>
+				<input type="text" name="name_login" id="name_login" placeholder="請輸入帳號....">
+			</div>
+			<div data-role="fieldcontain">
+				<label for="psw_login">密碼:</label>
+				<input type="password" name="psw_login" id="psw_login" placeholder="請輸入密碼....">
+			</div>
+			<div class="ui-grid-a"> <!-- 表格4*4 黑底白字-->
+				<div class="ui-block-a"><a href="#" data-role="button" data-theme="b" id="login_ok">確認</a></div><!-- 舊版button -->
+				<div class="ui-block-b"><a href="#" data-role="button" data-theme="b" id="login_cancel">取消</a></div>
+				
+			</div>
+		</div>
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>最新消息	</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<!-- list-view 應用 -->
+			<ul data-role="listview" data-filter="true" data-filter-placeholder="請輸入尋找新聞標題!" data-inset="true">
+				<li data-role="list-divider" data-theme="b">公司活動</li>
+				<li >
+					<a href="#"><img src="images/small-note20.png" alt="" >
+						<h3>
+							兩位露出工程良好_最新消息
+						</h3>
+						<p>
+							特色禮品保證伊拉克共，。
+						</p>
+						<span class="ui-li-count">!!突發!!</span>
+					</a>
+				</li>
+				<li data-icon="home">
+					<a href="#"><img src="images/8226114_L.jpg" alt="">
+						<h3>
+							連接你們時尚小姐_最新消息
+						</h3>
+						<p>
+							母親中有消息批評想到實，比較一名趕緊採。
+						</p>
+						<span class="ui-li-count">77</span></a>
+					<a href="#">
+					</a>
+				</li>
+				<li data-role="list-divider" data-theme="b">特價商品</li>
+				<li>
+					<a href="#"><img src="images/8226114_L.jpg" alt="">
+						<h3>
+							如有排名點這裡請_最新消息
+						</h3>
+						<p>
+							女朋友好好食物只是原帖，圍繞相信友情連。
+						</p>
+						<span class="ui-li-count">99</span></a>
+						<a href="#">
+						</a>
+				</li>
+				<li>
+					<a href="#"><img src="images/8226114_L.jpg" alt="">
+						<h3>
+							速度俄羅斯這樣上_最新消息
+						</h3>
+						<p>
+							多多挑戰氣氛網路效果很好黑龍，清除一把。
+						</p>
+						<span class="ui-li-aside">88</span></a>
+					<a href="#">
+					</a>
+				</li>
+				<li>
+					<a href="#"><img src="images/8226114_L.jpg" alt="">
+						<h3>
+							如果你貨幣有利於_最新消息
+						</h3>
+						<p>
+							手段事業新疆眼神眼前社會主義，社會引導。
+						</p>
+						<span class="ui-li-aside">87</span></a>
+					<a href="#">
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<div data-role="navbar" data-grid="b" data-iconpos="right">
+				<ul>
+					<li><a href="#home" data-icon="home" >首頁</a></li>
+					<li><a href="#regist" data-icon="edit" >註冊</a></li>
+					<li><a href="#info" data-icon="info" class="ui-btn-active">最新消息</a></li>
+				</ul>
+			</div>	
+		</div>
+	</div>
+</body>
+</html>

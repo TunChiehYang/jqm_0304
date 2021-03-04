@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+	<script src="js/jquery-2.1.0.min.js"></script>
+	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+	<style>
+		.ui-icon-icon-p:after{background-image:url("images/icon-p.ico");
+	}
+	.ui-icon-icon-n:after{background-image: url("images/icon-n.ico");
+	}
+	.ui-icon-icon-x:after{background-image: url("images/icon-x.ico");
+	}
+	</style>
+</head>
+<body>
+	<!-- home class -->
+	<div data-role="page" id="home">
+		<div data-role="header" data-theme="b" data-position="fixed">
+			<h1>首頁</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<a href="foo.html" data-rel="dialog">Open dialog</a>
+			
+			
+			
+		</div>
+		<div data-role="footer" data-theme="b" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#home" data-icon="icon-x" class="ui-btn-active ui-state-persis">首頁</a></li>
+					<li><a href="#product" data-icon="icon-p">產品介紹</a></li>
+					<li><a href="#about" data-icon="icon-n" data-rel="dialog">公司介紹</a></li>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- product -->
+	<div data-role="page" id="product">
+		<div data-role="header" data-theme="b" data-position="fixed">
+			<a href="#" data-rel="back" data-theme="a">Back</a>
+			<h1>首頁</h1>
+		</div>
+		<!-- product-a42 -->
+		<div role="main" class="ui-content">
+			<a href="#a42" data-rel="popup" data-position-to="window">
+				<img src="./images/large-a42.png"  width="32%" alt="">	
+			</a>
+			<div data-role="popup" id="a42" data-dismissible="false">
+				<a href="#" data-role="button" data-icon="delete" data-iconpos="notext" data-theme="a" class="ui-btn-right" data-rel="back">Close</a>
+				<img src="images/large-a42.png" alt="">
+				<p>品牌：三星</p>
+				<p>尺寸：6.0</p>
+				<p>售價：$8800</p>				
+			</div>
+			<!-- a51 -->
+			<a href="#a51" data-rel="popup" data-position-to="window">
+				<img src="./images/large-a51.png" width="32%" alt="">
+			</a>
+			<div data-role="popup" id="a51" data-dismissible="false">
+				<a href="#" data-role="button" data-icon="delete" data-iconpos="notext" data-theme="a" class="ui-btn-right" data-rel="back">Close</a>
+				<img src="./images/large-a51.png" alt="">
+				<p>品牌：三星</p>
+				<p>尺寸：6.3寸</p>
+				<p>售價：$9900</p>
+			</div>
+			<!-- i12 -->
+			<a href="#i12" data-rel="popup" data-position-to="window">
+				<img src="./images/large-i12.png" width="32%" alt="">
+			</a>
+			<div data-role="popup" id="i12" data-dismissible="false"> 
+				<a href="#" data-role="button" data-icon="delete" data-iconpos="notext" data-theme="a" class="ui-btn-right" data-rel="back">Close</a>
+				<img src="./images/large-i12.png" alt="">
+				<p>品牌：Apple</p>
+				<p>尺寸：6.2寸</p>
+				<p>售價：$29900</p>			
+			</div>
+			<!-- a71 -->
+			<a href="#a71" data-rel="popup" data-position-to="window"><img src="images/large-a71.png"  width="32%" alt=""></a>
+			<div data-role="popup" id="a71"    data-dismissible="fase">
+				<a href="#" data-role="button" data-icon="delete" data-theme="a " data-iconpos="notext" class="ui-btn-right" data-rel="back">Close</a>
+				<img src="./images/large-a71.png" alt="">
+				<p>品牌：三星</p>
+				<p>尺寸：6.3寸</p>
+				<p>售價：$8900</p>
+			</div>
+			<!-- s20se -->
+			<a href="#s20se" data-rel="popup" data-position-to="window"><img src="images/large-s20se.png" width="32%"  alt=""></a>
+			<div data-role="popup" id="s20se" data-dismissible="fase">
+				<a href="#" data-role="button" data-icon="delete" data-theme="a " data-iconpos="notext" class="ui-btn-right" data-rel="back">Close</a>
+				<img src="./images/large-s20se.png" alt="">
+				<p>品牌：三星</p>
+				<p>尺寸：6.5寸</p>
+				<p>售價：$11900</p>
+			</div>
+			<!-- x12 -->
+			<a href="#x12" data-rel="popup" data-position-to="window"><img src="images/large-x12.png" width="32%"  alt=""></a>
+			<div data-role="popup" id="x12"    data-dismissible="fase">
+				<a href="#" data-role="button" data-icon="delete" data-theme="a " data-iconpos="notext" class="ui-btn-right" data-rel="back">Close</a>
+				<img src="./images/large-x12.png" alt="">
+				<p>品牌：Sony</p>
+				<p>尺寸：6.4寸</p>
+				<p>售價：$28900</p>
+			</div>
+			<a href="#x5" data-rel="popup" data-position-to="window"><img src="images/large-x5.png" width="32%"  alt=""></a>
+			<div data-role="popup" id="x5"    data-dismissible="fase">
+				<a href="#" data-role="button" data-icon="delete" data-theme="a " data-iconpos="notext" class="ui-btn-right" data-rel="back">Close</a>
+				<img src="./images/large-x5.png" alt="">
+				<p>品牌：Sony</p>
+				<p>尺寸：6.1寸</p>
+				<p>售價：$18900</p>
+			</div>
+		</div>
+		<div data-role="footer" data-theme="b" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#home" data-icon="icon-x" >首頁</a></li>
+					<li><a href="#product" data-icon="icon-p"class="ui-btn-active ui-state-persis">產品介紹</a></li>
+					<li><a href="#about" data-icon="icon-n">公司介紹</a></li>
+				</ul>
+			</div>
+		</div>
+	<div data-role="page" id="about">
+		<div data-role="header">
+			<h1>關於公司</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<p>地址：含有人間心裡樣子飯店行業，發。</p>
+        	<p>電話：0809876789</p>
+        	<p>Email：Lorem@ipsum.dolor.sit</p>
+		</div>
+		<div data-role="footer">
+			
+		</div>
+
+
+			
+		</div>
+	</div>
+	
+</body>
+</html>

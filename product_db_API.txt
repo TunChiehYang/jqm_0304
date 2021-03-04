@@ -1,0 +1,14 @@
+
+
+API file name:
+20210217-2_select_db.php
+
+data base structure:
+資料庫名：pruduct
+表名:product_item
+欄位名稱：
+Name:  (varchar)     =>產品名稱
+Price: (int)				=>售價
+Qty:   (int)		=>數量
+Created_at  (int ) 		=>建立時間
+

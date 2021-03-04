@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+	<script src="js/jquery-2.1.0.min.js"></script>
+	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+	<script>
+		$(function(){
+			$.ajax({
+				type:"GET",
+				url:"20210217-2_select_db.php",
+				dataType:"json",
+				success:showdata,
+				error:function(){
+					alert("error-20210217-2_select_db.php");
+				},
+			});
+		});
+		function showdata(data){
+			console.log(data);
+			for(var i=0;i<data.length;i++){
+				var strHTML='<li ><a href="#"><h3>產品名稱：'+data[i]["Name"]+'</h3><h3>價格:'+data[i]["Price"]+'</h3><p>建立日期:'+data[i]["Created_at"]+'</p><span class="ui-li-count">數量：'+data[i]["Qty"]+'</span></a></li>';
+				// var strHtml='<li ><a href="#"><h3>產品名稱：'+data["Name"][i]+'</h3><p>價格:'+data["Price"][i]+'</p><h3>數量:'+data["Qty"][i]+'</h3><span class="ui-li-count">!!特價!!</span></a></li>';
+				$("#product").append(strHTML);
+			}
+			$("#product").listview("refresh");
+		}
+	</script>
+</head>
+<body>
+	<div data-role="page" id="home">
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>首頁	</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<!-- list-view 應用 -->
+			<ul data-role="listview" data-filter="true" data-filter-placeholder="請輸入尋找產品!" data-inset="true" id="product">
+				<!-- <li >
+					<a href="#">
+						<h3>產品名稱：</h3>
+						<h3>價格:</h3>
+						<p>建立日期:</p>	
+						<span class="ui-li-count">數量：</span>
+					</a>
+				</li> -->
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h1>頁尾	</h1>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+data-role="button" → class="ui-btn"
+data-theme="a" → class="ui-btn-a" (replace "a" by the actual theme swatch letter that you want to use)
+data-corners="true" → class="ui-corner-all"
+data-shadow="true" → class="ui-shadow"
+data-mini="true" → class="ui-mini"
+data-icon="home" → class="ui-icon-home" (replace "home" by the actual name of the icon that you want to use)
+data-iconpos="right" → class="ui-btn-icon-right" (replace "right" by the actual icon position that you want to use: right, left, top, or bottom)
+data-iconshadow="true" → class="ui-shadow-icon"

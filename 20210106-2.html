@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+	<script src="js/jquery-2.1.0.min.js"></script>
+	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+	<style>
+		#colorpannel{
+			width:100%;
+			height: 250px;
+			border: 5px solid #ccc;
+			box-shadow: 5px 5px 10px 10px darkgray;
+		}
+	</style>
+	<script>
+	function set_color(){
+		var red=$("#red").val();
+		var green=$("#green").val();
+		var blue=$("#blue").val();
+		var color="RGB("+red+","+green+","+blue+")";
+		$("#colorpannel").css("background-color",color);
+	}
+	</script>
+</head>
+<body>
+	<div data-role="page" id="home">
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>調色盤	</h1>
+		</div>
+		<div role="main" class="ui-content">
+			
+			<!-- 滑桿 紅色-->
+			<div data-role="fieldcontain">
+				<label for="red">R:</label>
+				<input type="range" name="red" id="red" value="50" max="255" min="0" step="1" onchange="set_color();">
+			</div>
+			<!-- Slider bar 綠色 -->
+			<div data-role="fieldcontain">
+				<label for="green">G:</label>
+				<input type="range" name="green" id="green" value="160" max="255" min="0" step="1" onchange="set_color();">
+			</div>
+			<!-- Slider bar 藍色 -->
+			<div data-role="fieldcontain">
+				<label for="blue">B:</label>
+				<input type="range" name="blue" id="blue" value="160" max="255" min="0" step="1" onchange="set_color();">
+			</div>
+			<div id="colorpannel" ></div>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h1>頁尾	</h1>
+		</div>
+	</div>
+</body>
+</html>

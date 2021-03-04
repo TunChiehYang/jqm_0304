@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+	<script src="js/jquery-2.1.0.min.js"></script>
+	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+	<style>
+		#map{
+			height: 100vh;
+		}
+	</style>
+</head>
+<body>
+	<div id="map"></div>
+	<script>
+		$(function () {
+        $.ajax({
+          type: "GET",
+          url: "20210203-GET-opendata-youbike.php",
+          dataType: "json", //用ajax 內建dataType排版 json資料
+          success: showdata,
+          error: function () {
+            alert("error-20210203-GET-opendata-youbike.php");
+          },
+        });
+      });
+      function showdata(data) {
+      	for(var i=0;i<data["retVal"].length;i++){
+      		var strHTML='<li ><h3>地點:'+data["retVal"][i]["sna"]+'</h3><p>'+data["retVal"][i]["ar"]+'</p><h3>使用中：'+data["retVal"][i]["sbi"]+' 剩餘：'+data["retVal"][i]["bemp"]+' 共：'+data["retVal"][i]["tot"]+' 台</h3></li>';
+      		L.marker([data["retVal"][i]["lat"], data["retVal"][i]["lng"]]).addTo(map)
+		    .bindPopup(strHTML)
+		    .openPopup();
+      	}
+      }
+
+		var map = L.map('map').setView([24.16143, 120.648701], 13);
+
+		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+		}).addTo(map);
+
+			
+	</script>			
+</body>
+</html>

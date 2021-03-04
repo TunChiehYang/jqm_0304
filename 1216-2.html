@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+	<script src="js/jquery-2.1.0.min.js"></script>
+	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+	<style >
+	.ui-icon-icon-p:after{background-image:url("images/icon-p.ico");
+	}
+	.ui-icon-icon-n:after{background-image: url("images/icon-n.ico");
+	}
+	.ui-icon-icon-x:after{background-image: url("images/icon-x.ico");
+
+	}
+
+</style>
+</head>
+
+<body>
+	<div data-role="page">
+		<div data-role="header" data-theme="b" data-position="fixed">
+			<h3><img src="./images/1608088340_983462.png" width="100%" alt=""></h3>
+			<!-- navbar -->
+			<!-- <div data-role="navbar">
+				<ul>
+					<li><a href="#">選單1</a></li>
+					<li><a href="#">選單2</a></li>
+					<li><a href="#">選單3</a></li>
+					<li><a href="#">選單4</a></li>
+				</ul>
+			</div> -->
+		</div>
+		<div role="main" class="ui-content">
+			<div class="ui-grid-b" >
+				<div class="ui-block-a"><a href="#" class="ui-btn ui-state-disable ">按鈕一</a></div>
+				<div class="ui-block-b"><a href="#" class="ui-btn">按鈕二</a></div>
+				<div class="ui-block-c"><a href="#" class="ui-btn">按鈕三</a></div>
+			</div>
+			<!-- navbar -->
+			<div data-role="navbar" data-grid="c" data-iconpos="right">
+				<ul>
+					<li><a href="#" data-icon="star">選單1</a></li>
+					<li><a href="#" data-icon="clock" class="ui-btn-active">選單2</a></li>
+					<li><a href="#" data-icon="edit">選單3</a></li>
+					<li><a href="#" data-icon="edit">選單4</a></li>
+				</ul>
+			</div>
+			<a href="#" data-role="button" data-theme="b" data-icon="star">Star</a>
+			<a href="#" data-role="button" data-theme="b" data-icon="camera">Camera</a>
+			<a href="#" data-role="button" data-theme="b" data-icon="clock">Clock</a>
+			<a href="#" data-role="button" data-theme="b" data-icon="comment">Comment</a>
+			<a href="#" data-role="button" data-theme="b" data-icon="edit">Edit</a>
+		</div>
+		<div data-role="footer" data-theme="b" data-position="fixed">
+			<!-- navbar -->
+			<div data-role="navbar" data-iconpos="bottom">
+				<ul>
+					<li><a href="#" data-icon="star">選單1</a></li>
+					<li><a href="#" data-icon="location">選單2</a></li>
+					<li><a href="#" data-icon="lock">選單3</a></li>
+					<li><a href="#" data-icon="mail">選單4</a></li>
+				</ul>
+			</div>
+		</div>
+		<div data-role="content">
+			<ul data-role="listview">
+				<li>ABCDE</li>
+				<li>FGH</li>
+				<li>DR####</li>
+				<li>!@#%f</li>
+			</ul>
+			
+		</div>
+	</div>
+	
+</body>
+</html>

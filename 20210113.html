@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+	<script src="js/jquery-2.1.0.min.js"></script>
+	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+	<script>
+		var flag_username=false;
+		var flag_password=false;
+		$(function(){
+			$("#ok_btn").bind("click",function(){
+				if(flag_username && flag_password ){
+					var mycar=[];
+					$.each($("input[name='car']:checked"),function(){
+						mycar.push($(this).val());
+					});
+					var myblood=[];
+					$.each($("input[name='blood']:checked"),function(){
+						myblood.push($(this).val());
+					})
+					console.log(myblood);
+					// console.log(mycar);
+					$("#showmsg").html("<p>帳號： "+$("#username").val()+"</p>密碼： "+$("#password").val()+"</p>請選擇： "+$("#message").val()+"</p>最高學歷： "+$("#edu").val()+"</p>車型： "+mycar+"</p>血型： "+myblood+"</p>");
+				}else{
+					alert("欄位輸入錯誤！！");
+				}
+			});
+			$("#username").bind("input propertychang",function(){
+				// console.log($("#username").val());
+				if($("#username").val().length >2 && $("#username").val().length <9){
+					$("#err_username").html("");
+					flag_username=true;
+				}
+				else
+				{
+					$("#err_username").html("帳號介於3~8個字!!");
+					$("#err_username").css("color","red");
+					flag_username=false;
+				}
+			})
+			$("#password").bind("input propertychang",function(){
+				// console.log($("#password").val());
+				if($("#password").val().length >5 && $("#password").val().length <16){
+					$("#err_password").html("");
+					flag_password=true;
+				}
+				else
+				{
+					$("#err_password").html("密碼介於6~15個字!!");
+					$("#err_password").css("color","red");
+					flag_password=false;
+				}
+			})
+		})
+	</script>
+</head>
+<body>
+	<div data-role="page" id="home">
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>首頁	</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<div data-role="fieldcontain">
+				<label for="username">帳號:</label>
+				<input type="text" name="username" id="username" placeholder="請輸入帳號3~8個字....">
+			</div>
+			<div id="err_username"></div>	
+			<div data-role="fieldcontain">
+				<label for="password">密碼:</label>
+				<input type="text" name="password" id="password" placeholder="請輸入密碼 6~15個字....">
+			</div>
+			<div id="err_password"></div>
+			<!-- slider -->
+			<div data-role="fieldcontain">
+				<label for="message">請選擇</label>
+				<select name="message" id="message" data-role="slider">
+					<option value="接受">接受</option>
+					<option value="不接受">不接受</option>
+				</select>
+			</div>
+			<div data-role="fieldcontain">
+				<label for="edu">最高學歷</label>
+				<select name="edu" id="edu">
+					<option value="碩士以上">碩士以上</option>
+					<option value="大學.大專">大學.大專</option>
+					<option value="高中以下">高中以下</option>
+				</select>
+			</div>
+			<div data-role="fieldcontain">
+				<fieldset data-role="controlgroup" data-type="horizontal" >
+					<legend>選擇車型(複選)</legend>
+					<input type="checkbox" name="car" id="car1" value="小型車">
+					<label for="car1">小型車</label>
+					<input type="checkbox" name="car" id="car2" value="中型車">
+					<label for="car2">中型車</label>
+					<input type="checkbox" name="car" id="car3" value="大型車">
+					<label for="car3">大型車</label>
+					<input type="checkbox" name="car" id="car4" value="休旅車">
+					<label for="car4">休旅車</label>
+					<input type="checkbox" name="car" id="car5" value="其他">
+					<label for="car5">其他</label>
+				</fieldset>
+			</div>
+			<div data-role="fieldcontain">
+				<fieldset data-role="controlgroup" data-type="horizontal" >
+					<legend>血型</legend>
+					<input type="radio" name="blood" id="blood1" value="A型">
+					<label for="blood1">A型</label>
+					<input type="radio" name="blood" id="blood2" value="B型">
+					<label for="blood2">B型</label>
+					<input type="radio" name="blood" id="blood3" value="O型">
+					<label for="blood3">O型</label>
+					<input type="radio" name="blood" id="blood4" value="AB型">
+					<label for="blood4">AB型</label>
+			</div>
+			<div class="ui-grid-a"> <!-- 表格4*4 黑底白字-->
+				<div class="ui-block-a"><a href="#" data-role="button" data-theme="b" data-icon="check" id="ok_btn">確定</a></div><!-- 舊版button -->
+				<div class="ui-block-b"><a href="#" data-role="button" data-theme="b" data-icon="delete" id="cancel_btn">取消</a></div>
+			</div>
+			<div id="showmsg"></div>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h1>頁尾	</h1>
+		</div>
+	</div>
+</body>
+</html>
