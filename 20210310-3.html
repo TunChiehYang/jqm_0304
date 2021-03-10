@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <style>
+      @media screen and (max-width: 768px) {
+        .table-rdw thead {
+          display: none;
+        }
+        .table-rdw tbody tr {
+          display: block;
+          margin-top: 10px;
+          border: 3px solid #f88;
+        }
+        .table-rdw tbody tr td {
+          display: block;
+        }
+        .table-rdw tbody tr td::before {
+          content: attr(data-th) ":";
+          color: red;
+          font-weight: bold;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <table
+      class="table table-light table-striped table-hover table-bordered table-rdw"
+    >
+      <thead class="thead-dark">
+        <tr>
+          <th>編號</th>
+          <th>產品</th>
+          <th>數量</th>
+          <th>單價</th>
+          <th>備註</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-th="編號">001</td>
+          <td data-th="產品">江湖生日</td>
+          <td data-th="數量">50</td>
+          <td data-th="單價">1200</td>
+          <td data-th="備註">前往外觀或者堅決是什麼，是在。</td>
+        </tr>
+        <tr>
+          <td data-th="編號">002</td>
+          <td data-th="產品">宜蘭將在運輸歲。</td>
+          <td data-th="數量">50</td>
+          <td data-th="單價">1200</td>
+          <td data-th="備註">
+            前往外觀或者堅決是什麼，是在。
+            明年可憐房價手續更大歌曲，根據有意所屬全國感動根據
+          </td>
+        </tr>
+        <tr>
+          <td data-th="編號">003</td>
+          <td data-th="產品">參考召開真。</td>
+          <td data-th="數量">50</td>
+          <td data-th="單價">1200</td>
+          <td data-th="備註">友情身體，小孩專利教材，您是。</td>
+        </tr>
+        <tr>
+          <td data-th="編號">004</td>
+          <td data-th="產品">容易高度，感情麻。</td>
+          <td data-th="數量">50</td>
+          <td data-th="單價">1200</td>
+          <td data-th="備註">精品教材研發進攻社區，分享不少，都能。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

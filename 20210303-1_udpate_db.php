@@ -1,7 +1,7 @@
 <?php
 	if(isset($_POST["id"]) && isset($_POST["price"]) && isset($_POST["qty"])){
 		
-		// if(trim($_POST["id"])!=""&& trim($_POST["price"])!="" && trim($_POST["qty"])!=""){
+		if(trim($_POST["id"])!=""&& trim($_POST["price"])!="" && trim($_POST["qty"])!=""){
 			$id=$_POST["id"];
 			$price=$_POST["price"];
 			$qty=$_POST["qty"];
@@ -24,9 +24,9 @@
 					echo '{"status":false,"message":"~~~~~~更新失敗~~~~~"}' ;
 				}
 			mysqli_close($conn);
-		// }else{
-		// 	echo '{"status":false,"message":"輸入資料為空白，請重新輸入"}' ;
-		// }
+		}else{
+			echo '{"status":false,"message":"輸入資料為空白，請重新輸入"}' ;
+		}
 	}else{
 			echo '{"status":false,"message":"不允許未定義欄位"}' ;
 	}

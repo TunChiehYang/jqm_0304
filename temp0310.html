@@ -1,0 +1,11 @@
+for(var i=0;i<10;i++){ //使用迴圈將json資料讀入 data.length=>矩陣長度 var
+strHtml='
+<tr>
+  <td data-th="餐廳名稱：">'+data[i]["Name"]+'</td>
+  <td data-th="餐廳地址：">'+data[i]["Address"]+'</td>
+  <td data-th="所在城市：">'+data[i]["City"]+'</td>
+</tr>
+' //定義HTML語法字串 $("#foodlist").append(strHTML);
+//用.append()插（加）入html語法字串 而不是.html() }
+$("#foodlist").listview("refresh"); //用listview("refresh")
+重新刷新listvieww以加快載入速度。
