@@ -13,15 +13,64 @@
 </head>
 <style>
     .bg-cover {
-        height: 180px;
+        height: 260px;
         background-position: center center;
         background-size: cover;
+    }
+
+    .timeline-section {
+        position: relative;
+    }
+
+    .timeline-section:before {
+        position: absolute;
+        content: "";
+        width: 10px;
+        top: 0;
+        bottom: 0;
+        background-color: rgba(199, 181, 219, 0.6);
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .timeline-section-pointer {
+        position: relative;
+    }
+
+    .timeline-section-pointer:before {
+        position: absolute;
+        content: "";
+        widows: 30px;
+        height: 30px;
+        top: 0px;
+        background-color: #fff;
+        border-radius: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 8px solid #ccc;
+    }
+
+    .timeline-section-pointer:hover:before {
+        width: 50px;
+        height: 50px;
+        border: 15px solid #fa0;
+    }
+
+    @media screen and (max-width: 768px) {
+        .timeline-section:before {
+            display: none;
+        }
+
+        .timeline-section-pointer:before {
+            display: none;
+        }
     }
 </style>
 
 <body>
-    <div class="container">
-        <div class="row">
+    <div class="container py-3">
+        <div class="timeline-section"></div>
+        <div class="row timeline-section-pointer">
 
             <div class="col-md-6">
                 <p class="h2">跟着對付，評估穿著。</p>
